@@ -10,7 +10,7 @@ Cuando se usa una interfaz gráfica de usuario (GUI), necesitamos otro programa 
 
 Entonces empecemos. Inicia el emulador de terminal. Una vez que aparezca, deberíamos ver algo como esto:
 
-```linux
+```
 [me@linuxbox ~]$
 ```
 
@@ -20,7 +20,7 @@ Si el último carácter de la solicitud es una marca hash ( # ) en lugar de un s
 
 Suponiendo que las cosas estén bien hasta ahora, intentemos escribir. Ingrese algunas galimatías en el indicador de la siguiente manera:
 
-```linux
+```sh
 [me@linuxbox ~]$ kaekfjaeifj
 ```
 
