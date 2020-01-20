@@ -201,9 +201,8 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
-* PART II: CONFIGURATION AND THE ENVIRONMENT
+ * PART II: CONFIGURATION AND THE ENVIRONMENT
 
-{:start="11"}
 1. THE ENVIRONMENT
    
    What Is Stored in the Environment?
