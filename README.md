@@ -67,7 +67,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Your Feedback Is Needed!
    
- PART I: LEARNING THE SHELL
+   **PART I: LEARNING THE SHELL**
 
 1. WHAT IS THE SHELL?
 
@@ -201,7 +201,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
-   PART II: CONFIGURATION AND THE ENVIRONMENT
+   **PART II: CONFIGURATION AND THE ENVIRONMENT**
 
 1. THE ENVIRONMENT
    
@@ -249,7 +249,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
-  PART III: COMMON TASKS AND ESSENTIAL TOOLS
+   **PART III: COMMON TASKS AND ESSENTIAL TOOLS**
 
 
 1. PACKAGE MANAGEMENT
@@ -378,7 +378,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
- PART IV: WRITING SHELL SCRIPTS
+   **PART IV: WRITING SHELL SCRIPTS**
 
 2. WRITING YOUR FIRST SCRIPT
 
