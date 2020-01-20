@@ -203,7 +203,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
 * PART II: CONFIGURATION AND THE ENVIRONMENT
 
-1. THE ENVIRONMENT
+11. THE ENVIRONMENT
    
    What Is Stored in the Environment?
 
