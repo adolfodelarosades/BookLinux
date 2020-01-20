@@ -203,7 +203,8 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
 * PART II: CONFIGURATION AND THE ENVIRONMENT
 
-11. THE ENVIRONMENT
+{:start="11"}
+1. THE ENVIRONMENT
    
    What Is Stored in the Environment?
 
@@ -251,7 +252,8 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
 * PART III: COMMON TASKS AND ESSENTIAL TOOLS
 
-14. PACKAGE MANAGEMENT
+{:start="14"}
+1. PACKAGE MANAGEMENT
 
    Packaging Systems
    
@@ -261,7 +263,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
-15. STORAGE MEDIA
+1. STORAGE MEDIA
    
    Mounting and Unmounting Storage Devices
    
@@ -277,7 +279,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Extra Credit
    
-16. NETWORKING
+1. NETWORKING
 
    Examining and Monitoring a Network
    
@@ -287,7 +289,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
-17. SEARCHING FOR FILES
+1. SEARCHING FOR FILES
 
    locate—Find Files the Easy Way
    
@@ -295,7 +297,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
-18. ARCHIVING AND BACKUP
+1. ARCHIVING AND BACKUP
 
    Compressing Files
    
@@ -305,7 +307,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
-19. REGULAR EXPRESSIONS
+1. REGULAR EXPRESSIONS
 
    What Are Regular Expressions?
    
@@ -331,7 +333,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
-20. TEXT PROCESSING
+2. TEXT PROCESSING
 
    Applications of Text
    
@@ -347,7 +349,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Extra Credit
    
-21. FORMATTING OUTPUT
+2. FORMATTING OUTPUT
 
    Simple Formatting Tools
    
@@ -355,7 +357,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
-22. PRINTING
+2. PRINTING
 
    A Brief History of Printing
    
@@ -369,7 +371,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
-23. COMPILING PROGRAMS
+2. COMPILING PROGRAMS
 
    What Is Compiling?
    
