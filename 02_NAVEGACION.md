@@ -48,11 +48,11 @@ Desktop  Documents  Music  Pictures  Public  Templates  Videos
 
 192:clientes-app adolfodelarosa$ ls
 README.md				                              browserslist				package.json
-Seccion02_PrimerosPasosEnAngular.md	          e2e					        src
+Seccion02_PrimerosPasosEnAngular.md	        e2e					        src
 Seccion03_ComponenteClientes.md		            images					    tsconfig.app.json
 Seccion04_Backend_SpringAPI_REST.md	          karma.conf.js				tsconfig.json
-Seccion05_CRUDconSpringAPIRest.md	            node_modules				tsconfig.spec.json
-angular.json				                          package-lock.json		tslint.json
+Seccion05_CRUDconSpringAPIRest.md	          node_modules				tsconfig.spec.json
+angular.json				                   package-lock.json		tslint.json
 ```
 
 En realidad, podemos usar el comando `ls` para enumerar el contenido de cualquier directorio, no solo el directorio de trabajo actual, y hay muchas otras cosas divertidas que también puede hacer. Pasaremos más tiempo con ls en el Capítulo 3 .
@@ -96,68 +96,68 @@ El notación . se refiere al directorio de trabajo, y la notación .. se refiere
 [192:bin adolfodelarosa$ pwd
 /usr/bin
 ```
+Ahora digamos que queríamos cambiar el directorio de trabajo al padre de `/usr/bin`, que es `/usr`. Podríamos hacer eso de dos maneras diferentes, ya sea con un nombre de ruta absoluto:
 
-
-Ahora digamos que queríamos cambiar el directorio de trabajo al padre de / usr / bin , que es / usr . Podríamos hacer eso de dos maneras diferentes, ya sea con un nombre de ruta absoluto:
-
-[me @ linuxbox bin] $ cd / usr
-[me @ linuxbox usr] $ pwd
-/ usr
-
+```sh
+[me@linuxbox bin]$ cd /usr
+[me@linuxbox usr]$ pwd
+/usr
+```
 o con un nombre de ruta relativo:
-
-[me @ linuxbox bin] $ cd ..
-[me @ linuxbox usr] $ pwd
-/ usr
-
+```sh
+[me@linuxbox bin]$ cd ..
+[me@linuxbox usr]$ pwd
+/usr
+```
 Dos métodos diferentes con resultados idénticos. ¿Cuál deberíamos usar? ¡El que requiere menos tipeo!
 
-Del mismo modo, podemos cambiar el directorio de trabajo de / usr a / usr / bin de dos maneras diferentes, ya sea utilizando un nombre de ruta absoluto:
+Del mismo modo, podemos cambiar el directorio de trabajo de `/usr` a `/usr/bin` de dos maneras diferentes, ya sea utilizando un nombre de ruta absoluto:
 
-[me @ linuxbox usr] $ cd / usr / bin
-[me @ linuxbox bin] $ pwd
-/ usr / bin
-
+```sh
+[me@linuxbox usr]$ cd /usr/bin
+[me@linuxbox bin]$ pwd
+/usr/bin
+```
 o usando un nombre de ruta relativo:
 
-[me @ linuxbox usr] $ cd ./bin
-[me @ linuxbox bin] $ pwd
-/ usr / bin
+```sh
+[me@linuxbox usr]$ cd ./bin
+[me@linuxbox bin]$ pwd
+/usr/bin
+```
+Ahora, hay algo importante que señalar aquí. En casi todos los casos, podemos omitir la parte `./` porque está implícita. Escribir lo siguiente hace lo mismo:
 
-Ahora, hay algo importante que señalar aquí. En casi todos los casos, podemos omitir la parte ./ porque está implícita. Escribir lo siguiente hace lo mismo:
-
-[yo @ linuxbox usr] $ cd bin
+```sh
+[me@linuxbox usr]$ cd bin
+```
 
 En general, si no especificamos un nombre de ruta a algo, se asumirá el directorio de trabajo.
 
-HECHOS IMPORTANTES SOBRE LOS NOMBRES DE ARCHIVO
+##### HECHOS IMPORTANTES SOBRE LOS NOMBRES DE ARCHIVO
 
 En los sistemas Linux, los archivos se nombran de manera similar a la de otros sistemas como Windows, pero existen algunas diferencias importantes.
 
-Los nombres de archivo que comienzan con un carácter de punto están ocultos. Esto solo significa que ls no los enumerará a menos que usted diga ls -a . Cuando se creó su cuenta, se colocaron varios archivos ocultos en su directorio de inicio para configurar cosas para su cuenta. En el Capítulo 11, veremos más de cerca algunos de estos archivos para ver cómo puede personalizar su entorno. Además, algunas aplicaciones colocan sus archivos de configuración y configuración en su directorio de inicio como archivos ocultos.
-Los nombres de archivo y comandos en Linux, como Unix, distinguen entre mayúsculas y minúsculas. Los nombres de archivo File1 y file1 se refieren a diferentes archivos.
-Aunque Linux admite nombres de archivo largos que pueden contener espacios incrustados y caracteres de puntuación, limite los caracteres de puntuación en los nombres de los archivos que cree a punto, guión y guión bajo. Lo más importante, no incrustar espacios en los nombres de archivo. Si desea representar espacios entre palabras en un nombre de archivo, use caracteres de subrayado. Te lo agradecerás más tarde.
-Linux no tiene el concepto de una "extensión de archivo" como algunos otros sistemas operativos. Puede nombrar archivos de la forma que desee. El contenido o el propósito de un archivo se determina por otros medios. Aunque los sistemas operativos tipo Unix no usan extensiones de archivo para determinar el contenido / propósito de los archivos, muchos programas de aplicación lo hacen.
-Algunos atajos útiles
+* Los nombres de archivo que comienzan con un carácter de punto están ocultos. Esto solo significa que `ls` no los enumerará a menos que usted diga `ls -a` . Cuando se creó su cuenta, se colocaron varios archivos ocultos en su directorio de inicio para configurar cosas para su cuenta. En el Capítulo 11, veremos más de cerca algunos de estos archivos para ver cómo puede personalizar su entorno. Además, algunas aplicaciones colocan sus archivos de configuración y configuración en su directorio de inicio como archivos ocultos.
+
+* Los nombres de archivo y comandos en Linux, como Unix, distinguen entre mayúsculas y minúsculas. Los nombres de archivo `File1` y `file1` se refieren a diferentes archivos.
+
+* Aunque Linux admite nombres de archivo largos que pueden contener espacios incrustados y caracteres de puntuación, limite los caracteres de puntuación en los nombres de los archivos que cree a punto, guión y guión bajo. *Lo más importante, no incrustar espacios en los nombres de archivo*. Si desea representar espacios entre palabras en un nombre de archivo, use caracteres de subrayado. Te lo agradecerás más tarde.
+
+* Linux no tiene el concepto de una "extensión de archivo" como algunos otros sistemas operativos. Puede nombrar archivos de la forma que desee. El contenido o el propósito de un archivo se determina por otros medios. Aunque los sistemas operativos tipo Unix no usan extensiones de archivo para determinar el contenido o propósito de los archivos, muchos programas de aplicación lo hacen.
+
+### Algunos atajos útiles
+
 La Tabla 2-1 muestra algunas formas útiles de cambiar rápidamente el directorio de trabajo actual.
 
-Tabla 2-1: Atajos de CD
+Tabla 2-1: Atajos (Shortcuts) de `cd`
 
-Atajo
+Atajo | Resultado
+------|----------
+`cd`  | Cambia el directorio de trabajo a su directorio de inicio.
+`cd-` | Cambia el directorio de trabajo al directorio de trabajo anterior.
+`cd ~user_name` | Cambia el directorio de trabajo al directorio de inicio de `user_name`. Por ejemplo, escribir `cd ~bob` cambiará el directorio al directorio de inicio del usuario "bob".
 
-Resultado
 
-discos compactos
+## RESUMIENDO
 
-Cambia el directorio de trabajo a su directorio de inicio.
-
-discos compactos -
-
-Cambia el directorio de trabajo al directorio de trabajo anterior.
-
-cd ~ nombre_usuario
-
-Cambia el directorio de trabajo al directorio de inicio de user_name . Por ejemplo, escribir cd ~ bob cambiará el directorio al directorio de inicio del usuario "bob".
-
-RESUMIENDO
 Este capítulo explica cómo el shell trata la estructura de directorios del sistema. Aprendimos sobre nombres de ruta absolutos y relativos y los comandos básicos que usamos para movernos alrededor de esa estructura. En el próximo capítulo, utilizaremos este conocimiento para realizar un recorrido por un sistema Linux moderno.
