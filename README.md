@@ -213,7 +213,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
-2. A GENTLE INTRODUCTION TO VI
+1. A GENTLE INTRODUCTION TO VI
 
    Why We Should Learn vi
 
@@ -235,7 +235,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
 
    Summing Up
 
-13. CUSTOMIZING THE PROMPT
+1. CUSTOMIZING THE PROMPT
 
    Anatomy of a Prompt
    
