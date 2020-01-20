@@ -1,29 +1,38 @@
 # 1 ¿QUÉ ES EL SHELL?
 
-Cuando hablamos de la línea de comando, realmente nos estamos refiriendo al shell. El shell es un programa que toma comandos del teclado y los pasa al sistema operativo para llevarlos a cabo. Casi todas las distribuciones de Linux suministran un programa shell del Proyecto GNU llamado bash . El nombre es un acrónimo de b ourne- una ganancia sh ell, una referencia al hecho de que golpe es un reemplazo mejorado para sh , el programa original Unix shell escrito por Steve Bourne.
+Cuando hablamos de la línea de comando, realmente nos estamos refiriendo al *shell*. El shell es un programa que toma comandos del teclado y los pasa al sistema operativo para llevarlos a cabo. Casi todas las distribuciones de Linux suministran un programa shell del Proyecto GNU llamado `bash`. El nombre es un acrónimo de *b*ourne-*a*gain *sh*ell, una referencia al hecho de que `bash`  es un reemplazo mejorado para `sh`, el programa original Unix shell escrito por Steve Bourne.
 
-EMULADORES DE TERMINAL
-Cuando se usa una interfaz gráfica de usuario (GUI), necesitamos otro programa llamado emulador de terminal para interactuar con el shell. Si miramos a través de nuestros menús de escritorio, probablemente encontraremos uno. KDE usa konsole y GNOMEusa gnome-terminal, aunque probablemente se llame simplemente Terminal en su menú. Hay varios otros emuladores de terminal disponibles para Linux, pero todos básicamente hacen lo mismo: darnos acceso al shell. Probablemente desarrolle una preferencia por uno u otro emulador de terminal en función del número de campanas y silbatos que tenga.
+## EMULADORES DE TERMINAL
 
-HACIENDO SUS PRIMERAS PULSACIONES DE TECLAS
+Cuando se usa una interfaz gráfica de usuario (GUI), necesitamos otro programa llamado *emulador de terminal* para interactuar con el shell. Si miramos a través de nuestros menús de escritorio, probablemente encontraremos uno. KDE usa konsole y GNOME usa gnome-terminal, aunque probablemente se llame simplemente Terminal en su menú. Hay varios otros emuladores de terminal disponibles para Linux, pero todos básicamente hacen lo mismo: darnos acceso al shell. Probablemente desarrolle una preferencia por uno u otro emulador de terminal en función del número de campanas y silbatos que tenga.
+
+## HACIENDO SUS PRIMERAS PULSACIONES DE TECLAS
+
 Entonces empecemos. Inicia el emulador de terminal. Una vez que aparezca, deberíamos ver algo como esto:
 
-[yo @ linuxbox ~] $
+```linux
+[me@linuxbox ~]$
+```
 
-Esto se llama un indicador de comandos de shell y aparecerá cada vez que el shell esté listo para aceptar entradas. Si bien puede variar en apariencia, dependiendo de la distribución, generalmente incluirá su nombre de usuario @ machinename , seguido del directorio de trabajo actual (más sobre eso en un momento) y un signo de dólar.
+Esto se llama un *shell prompt (indicador de comandos de shell)* y aparecerá cada vez que el shell esté listo para aceptar entradas. Si bien puede variar en apariencia, dependiendo de la distribución, generalmente incluirá su *username@machinename*, seguido del directorio de trabajo actual (más sobre eso en un momento) y un signo de dólar.
 
 Si el último carácter de la solicitud es una marca hash ( # ) en lugar de un signo de dólar, la sesión de terminal tiene privilegios de superusuario. Esto significa que hemos iniciado sesión como usuario root o hemos seleccionado un emulador de terminal que proporciona privilegios de superusuario (administrativos).
 
 Suponiendo que las cosas estén bien hasta ahora, intentemos escribir. Ingrese algunas galimatías en el indicador de la siguiente manera:
 
-[yo @ linuxbox ~] $ kaekfjaeifj
+```linux
+[me@linuxbox ~]$ kaekfjaeifj
+```
 
 Debido a que este comando no tiene sentido, el shell nos lo dice y nos da otra oportunidad.
 
-bash: kaekfjaeifj: comando no encontrado
-[me @ linuxbox ~] $
+```linux
+bash: kaekfjaeifj: command not found
+[me@linuxbox ~]$
+```
 
-Historia de comando
+### Command History
+
 Si presionamos la flecha hacia arriba, veremos que el comando anterior ingresado, kaekfjaeifj , vuelve a aparecer después de la solicitud. Esto se llama historial de comandos . La mayoría de las distribuciones de Linux recuerdan los últimos 1,000 comandos por defecto. Presione la flecha hacia abajo y el comando anterior desaparece.
 
 Movimiento del cursor
