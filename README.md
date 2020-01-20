@@ -249,7 +249,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
- PART III: COMMON TASKS AND ESSENTIAL TOOLS
+  PART III: COMMON TASKS AND ESSENTIAL TOOLS
 
 
 1. PACKAGE MANAGEMENT
