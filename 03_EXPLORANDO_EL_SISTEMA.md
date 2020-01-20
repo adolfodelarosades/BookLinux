@@ -2,17 +2,20 @@
 
 Ahora que sabemos cómo movernos por el sistema de archivos, es hora de una visita guiada a nuestro sistema Linux. Sin embargo, antes de comenzar, aprenderemos algunos comandos más que serán útiles en el camino.
 
-ls contenidos de listas
+`ls` contenidos de listas
 
-archivo Determinar tipo de archivo
+`file` Determinar tipo de archivo
 
-menos Ver contenido del archivo
+`less` Ver contenido del archivo
 
-MÁS DIVERSIÓN CON LS
+## MÁS DIVERSIÓN CON LS
+
 El comando ls es probablemente el comando más utilizado, y por una buena razón. Con él, podemos ver el contenido del directorio y determinar una variedad de atributos importantes de archivos y directorios. Como hemos visto, simplemente podemos ingresar ls para obtener una lista de archivos y subdirectorios contenidos en el directorio de trabajo actual.
 
-[me @ linuxbox ~] $ ls
-Documentos de escritorio Música Imágenes Plantillas públicas Videos
+```sh
+[me@linuxbox ~]$ ls
+Desktop  Documents  Music  Pictures  Public  Templates  Videos
+```
 
 Además del directorio de trabajo actual, podemos especificar el directorio a enumerar, así:
 
@@ -41,7 +44,8 @@ drwxrwxr-x 2 me me 4096 2017-10-26 17:20 Videos
 
 Al agregar -l al comando, cambiamos la salida al formato largo.
 
-Opciones y argumentos
+### Opciones y argumentos
+
 Esto nos lleva a un punto muy importante sobre cómo funcionan la mayoría de los comandos. Los comandos suelen ir seguidos de una o más opciones que modifican su comportamiento y, además, de uno o más argumentos , los elementos sobre los que actúa el comando. Entonces, la mayoría de los comandos se ven así:
 
 comando -opciones argumentos
@@ -122,7 +126,8 @@ Ordenar resultados por tamaño de archivo.
 
 Ordenar por tiempo de modificación.
 
-Una mirada más larga al formato largo
+### Una mirada más larga al formato largo
+
 Como vimos anteriormente, la opción -l hace que ls muestre sus resultados en formato largo. Este formato contiene una gran cantidad de información útil. Aquí está el directorio de ejemplos de un sistema Ubuntu:
 
 -rw-r - r-- 1 raíz raíz 3576296 03/04/2017 11:05 Experiencia ubuntu.ogg
@@ -173,7 +178,8 @@ oo-cd-cover.odf
 
 Nombre del archivo.
 
-DETERMINAR EL TIPO DE ARCHIVO CON ARCHIVO
+## DETERMINAR EL TIPO DE ARCHIVO CON ARCHIVO
+
 A medida que exploremos el sistema, será útil saber qué archivos contienen. Para hacer esto, usaremos el comando de archivo para determinar el tipo de archivo. Como discutimos anteriormente, los nombres de archivo en Linux no están obligados a reflejar el contenido de un archivo. Mientras que normalmente se esperaría que un nombre de archivo como picture.jpg contenga una imagen comprimida en JPEG, no es obligatorio en Linux. Podemos invocar el comando de archivo de esta manera:
 
 nombre de archivo
@@ -187,7 +193,8 @@ Hay muchos tipos de archivos. De hecho, una de las ideas comunes en los sistemas
 
 Si bien muchos de los archivos en nuestro sistema son familiares, por ejemplo, archivos MP3 y JPEG, hay muchos tipos que son un poco menos obvios y algunos que son bastante extraños.
 
-VER EL CONTENIDO DEL ARCHIVO CON MENOS
+### VER EL CONTENIDO DEL ARCHIVO CON LESS
+
 El comando less es un programa para ver archivos de texto. En todo nuestro sistema Linux, hay muchos archivos que contienen texto legible por humanos. El programa menos proporciona una forma conveniente de examinarlos.
 
 ¿Por qué querríamos examinar los archivos de texto? Debido a que muchos de los archivos que contienen configuraciones del sistema (llamados archivos de configuración ) se almacenan en este formato, y poder leerlos nos da una idea de cómo funciona el sistema. Además, algunos de los programas reales que utiliza el sistema (llamados scripts ) se almacenan en este formato. En capítulos posteriores, aprenderemos cómo editar archivos de texto para modificar la configuración del sistema y escribir nuestros propios scripts, pero por ahora solo veremos su contenido.
@@ -260,16 +267,17 @@ q
 
 Dejar menos
 
-MENOS ES MÁS
+##### MENOS ES MÁS
 
 El programa less fue diseñado como un reemplazo mejorado de un programa anterior de Unix llamado more . El nombre menos es un juego de palabras con la frase "menos es más", un lema de arquitectos y diseñadores modernistas.
 
 menos cae en la clase de programas llamados buscapersonas , programas que permiten la visualización fácil de documentos de texto largos de una página por página. Mientras que el programa más solo puede avanzar de página, el programa menos permite la paginación tanto hacia adelante como hacia atrás y tiene muchas otras características también.
 
-TOMANDO UNA VISITA GUIADA
+## TOMANDO UNA VISITA GUIADA
+
 El diseño del sistema de archivos en un sistema Linux es muy similar al que se encuentra en otros sistemas similares a Unix. El diseño se especifica realmente en un estándar publicado llamado Estándar de jerarquía del sistema de archivos de Linux . No todas las distribuciones de Linux se ajustan exactamente al estándar, pero la mayoría se acercan bastante.
 
-¡RECUERDA EL TRUCO DE COPIAR Y PEGAR!
+##### ¡RECUERDA EL TRUCO DE COPIAR Y PEGAR!
 
 Si está usando un mouse, puede hacer doble clic en un nombre de archivo para copiarlo y hacer clic con el botón central para pegarlo en los comandos.
 
@@ -388,7 +396,8 @@ Con la excepción de / tmp y / home , los directorios que hemos visto hasta ahor
 / var / log contiene archivos de registro, registros de diversas actividades del sistema. Estos son importantes y deben ser monitoreados de vez en cuando. Los más útiles son / var / log / messages y / var / log / syslog . Tenga en cuenta que, por razones de seguridad en algunos sistemas, debe ser el superusuario para ver los archivos de registro.
 
 
-ENLACES SIMBÓLICOS
+## ENLACES SIMBÓLICOS
+
 Al mirar a nuestro alrededor, es probable que veamos una lista de directorios (por ejemplo, / lib ) con una entrada como esta:
 
 lrwxrwxrwx 1 root root 11 2018-08-11 07:34 libc.so.6 -> libc-2.6.so
@@ -401,8 +410,10 @@ Aquí es donde los enlaces simbólicos salvan el día. Supongamos que instalamos
 
 La lista de directorios al comienzo de esta sección (del directorio / lib de un sistema Fedora) muestra un enlace simbólico llamado libc.so.6 que apunta a un archivo de biblioteca compartida llamado libc-2.6.so . Esto significa que los programas que buscan libc.so.6 realmente obtendrán el archivo libc-2.6.so . Aprenderemos cómo crear enlaces simbólicos en el próximo capítulo.
 
-ENLACES DUROS
+## ENLACES DUROS
+
 Mientras estamos en el tema de los enlaces, debemos mencionar que hay un segundo tipo de enlace llamado enlaces duros . Los enlaces duros también permiten que los archivos tengan múltiples nombres, pero lo hacen de una manera diferente. Hablaremos más sobre las diferencias entre enlaces simbólicos y duros en el próximo capítulo.
 
-RESUMIENDO
+## RESUMIENDO
+
 Con nuestro recorrido detrás de nosotros, hemos aprendido mucho sobre nuestro sistema. Hemos visto varios archivos y directorios y sus contenidos. Una cosa que debes sacar de esto es lo abierto que es el sistema. En Linux hay muchos archivos importantes que son texto legible para humanos. A diferencia de muchos sistemas propietarios, Linux pone todo a disposición para su examen y estudio.
