@@ -67,7 +67,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Your Feedback Is Needed!
    
-* PART I: LEARNING THE SHELL
+ PART I: LEARNING THE SHELL
 
 1. WHAT IS THE SHELL?
 
@@ -249,9 +249,9 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
-* PART III: COMMON TASKS AND ESSENTIAL TOOLS
+ PART III: COMMON TASKS AND ESSENTIAL TOOLS
 
-{:start="14"}
+
 1. PACKAGE MANAGEMENT
 
    Packaging Systems
@@ -378,9 +378,9 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
-PART IV: WRITING SHELL SCRIPTS
+ PART IV: WRITING SHELL SCRIPTS
 
-24. WRITING YOUR FIRST SCRIPT
+2. WRITING YOUR FIRST SCRIPT
 
    What Are Shell Scripts?
    
@@ -390,7 +390,7 @@ PART IV: WRITING SHELL SCRIPTS
    
    Summing Up
    
-25. STARTING A PROJECT
+2. STARTING A PROJECT
 
    First Stage: Minimal Document
 
@@ -402,7 +402,7 @@ PART IV: WRITING SHELL SCRIPTS
    
    Summing Up
 
-26. TOP-DOWN DESIGN
+2. TOP-DOWN DESIGN
    
    Shell Functions
 
@@ -412,7 +412,7 @@ PART IV: WRITING SHELL SCRIPTS
 
    Summing Up
 
-27. FLOW CONTROL: BRANCHING WITH IF
+2. FLOW CONTROL: BRANCHING WITH IF
 
    if Statements
 
@@ -430,7 +430,7 @@ PART IV: WRITING SHELL SCRIPTS
 
    Summing Up
 
-28. READING KEYBOARD INPUT
+2. READING KEYBOARD INPUT
 
    read—Read Values from Standard Input
 
@@ -442,7 +442,7 @@ PART IV: WRITING SHELL SCRIPTS
 
    Extra Credit
 
-29. FLOW CONTROL: LOOPING WITH WHILE/UNTIL
+2. FLOW CONTROL: LOOPING WITH WHILE/UNTIL
 
    Looping
 
@@ -452,7 +452,7 @@ PART IV: WRITING SHELL SCRIPTS
 
    Summing Up
 
-30. TROUBLESHOOTING
+3. TROUBLESHOOTING
 
    Syntactic Errors
 
@@ -464,13 +464,13 @@ PART IV: WRITING SHELL SCRIPTS
 
    Summing Up
 
-31. FLOW CONTROL: BRANCHING WITH CASE
+3. FLOW CONTROL: BRANCHING WITH CASE
 
    The case Command
    
    Summing Up
    
-32. POSITIONAL PARAMETERS
+3. POSITIONAL PARAMETERS
 
    Accessing the Command Line
    
@@ -480,7 +480,7 @@ PART IV: WRITING SHELL SCRIPTS
    
    Summing Up
    
-33. FLOW CONTROL: LOOPING WITH FOR
+3. FLOW CONTROL: LOOPING WITH FOR
 
    for: Traditional Shell Form
    
@@ -488,7 +488,7 @@ PART IV: WRITING SHELL SCRIPTS
    
    Summing Up
    
-34. STRINGS AND NUMBERS
+3. STRINGS AND NUMBERS
 
    Parameter Expansion
 
@@ -500,7 +500,7 @@ PART IV: WRITING SHELL SCRIPTS
 
    Extra Credit
 
-35. ARRAYS
+3. ARRAYS
 
    What Are Arrays?
    
@@ -516,7 +516,7 @@ PART IV: WRITING SHELL SCRIPTS
    
    Summing Up
    
-36. EXOTICA
+3. EXOTICA
 
    Group Commands and Subshells
    
