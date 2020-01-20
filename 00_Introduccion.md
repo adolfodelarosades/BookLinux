@@ -20,13 +20,13 @@ Dado que Linux se basa en la familia de sistemas operativos Unix, comparte la mi
 
 ## DE QUÉ TRATA ESTE LIBRO
 
-Este libro es una visión general de "vivir" en la línea de comandos de Linux. A diferencia de algunos libros que se concentran en un solo programa, como el programa bash bash , este libro intentará transmitir cómo llevarse bien con el programa.interfaz de línea de comando en un sentido más amplio. ¿Cómo funciona todo? ¿Qué puede hacer? ¿Cuál es la mejor manera de usarlo?
+Este libro es una visión general de "vivir" en la línea de comandos de Linux. A diferencia de algunos libros que se concentran en un solo programa, como el programa shell `bash`, este libro intentará transmitir cómo llevarse bien con la interfaz de línea de comando (command line interface) en un sentido más amplio. ¿Cómo funciona todo? ¿Qué puede hacer? ¿Cuál es la mejor manera de usarlo?
 
-Este no es un libro sobre la administración del sistema Linux. Si bien cualquier discusión seria sobre la línea de comando invariablemente conducirá a temas de administración del sistema, este libro aborda solo unos pocos problemas de administración. Sin embargo, preparará al lector para un estudio adicional al proporcionar una base sólida en el uso de la línea de comando, una herramienta esencial para cualquier tarea seria de administración del sistema.
+**Este no es un libro sobre la administración del sistema Linux**. Si bien cualquier discusión seria sobre la línea de comando invariablemente conducirá a temas de administración del sistema, este libro aborda solo unos pocos problemas de administración. Sin embargo, preparará al lector para un estudio adicional al proporcionar una base sólida en el uso de la línea de comando, una herramienta esencial para cualquier tarea seria de administración del sistema.
 
-Este libro está centrado en Linux. Muchos otros libros intentan ampliar su atractivo al incluir otras plataformas como Unix genérico y macOS. Al hacerlo, "diluyen" su contenido para presentar solo temas generales. Este libro, por otro lado, cubre solo las distribuciones contemporáneas de Linux. El noventa y cinco por ciento del contenido es útil para los usuarios de otros sistemas similares a Unix, pero este libro está muy dirigido al usuario moderno de la línea de comandos de Linux.
+**Este libro está centrado en Linux**. Muchos otros libros intentan ampliar su atractivo al incluir otras plataformas como Unix genérico y macOS. Al hacerlo, "diluyen" su contenido para presentar solo temas generales. Este libro, por otro lado, cubre solo las distribuciones contemporáneas de Linux. El noventa y cinco por ciento del contenido es útil para los usuarios de otros sistemas similares a Unix, pero este libro está muy dirigido al usuario moderno de la línea de comandos de Linux.
 
-## QUIÉN DEBERÍA LEER ESTE LIBRO
+## QUIÉN DEBERÍA LEER ESTE LIBRO
 
 Este libro es para nuevos usuarios de Linux que han migrado desde otras plataformas. Lo más probable es que sea un "usuario avanzado" de alguna versión de Microsoft Windows. Tal vez su jefe le ha dicho que administre un servidor Linux, o está entrando en el nuevo y emocionante mundo de las computadoras de placa única (SBC) como la Raspberry Pi. Es posible que solo sea un usuario de escritorio que esté cansado de todos los problemas de seguridad y quiera probar Linux. Esta bien. Todos son bienvenidos aquí.
 
@@ -36,7 +36,7 @@ Por otro lado, aprender la línea de comandos de Linux es extremadamente gratifi
 
 También se supone que no tienes experiencia en programación, pero no te preocupes, también te guiaremos por ese camino.
 
-## ¿QUÉ HAY EN ESTE LIBRO?
+## ¿QUÉ HAY EN ESTE LIBRO?
 
 Este material se presenta en una secuencia cuidadosamente elegida, muy similar a un tutor sentado a su lado que lo guía. Muchos autores tratan este material de manera "sistemática", cubriendo exhaustivamente cada tema en orden. Esto tiene sentido desde la perspectiva de un escritor, pero puede ser muy confuso para los nuevos usuarios.
 
