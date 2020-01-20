@@ -190,15 +190,20 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    How a Process Works
    
    Viewing Processes
+   
    Controlling Processes
+   
    Signals
+   
    Shutting Down the System
+   
    More Process-Related Commands
+   
    Summing Up
    
 * PART II: CONFIGURATION AND THE ENVIRONMENT
 
-11. THE ENVIRONMENT
+1. THE ENVIRONMENT
    
    What Is Stored in the Environment?
 
@@ -208,7 +213,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
-12. A GENTLE INTRODUCTION TO VI
+2. A GENTLE INTRODUCTION TO VI
 
    Why We Should Learn vi
 
