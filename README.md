@@ -47,26 +47,26 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
 
 • CONTENTS IN DETAIL
 
-   ACKNOWLEDGMENTS
-      First Edition
-      Second Edition
-INTRODUCTION
-Why Use the Command Line?
-What This Book Is About
-Who Should Read This Book
-What’s in This Book
-How to Read This Book
-What’s New in the Second Edition
-Your Feedback Is Needed!
-PART I: LEARNING THE SHELL
+* ACKNOWLEDGMENTS
+   First Edition
+   Second Edition
+* INTRODUCTION
+   Why Use the Command Line?
+   What This Book Is About
+   Who Should Read This Book
+   What’s in This Book
+   How to Read This Book
+   What’s New in the Second Edition
+   Your Feedback Is Needed!
+* PART I: LEARNING THE SHELL
 1 WHAT IS THE SHELL?
-Terminal Emulators
-Making Your First Keystrokes
-Try Some Simple Commands
-Ending a Terminal Session
-Summing Up
+   Terminal Emulators
+   Making Your First Keystrokes
+   Try Some Simple Commands
+   Ending a Terminal Session
+   Summing Up
 2 NAVIGATION
-Understanding the File System Tree
+   Understanding the File System Tree
 The Current Working Directory
 Listing the Contents of a Directory
 Changing the Current Working Directory
