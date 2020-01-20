@@ -184,24 +184,16 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    Changing Your Password
    
    Summing Up
-   
+
 10. PROCESSES
-
    How a Process Works
-
    Viewing Processes
-
    Controlling Processes
-
    Signals
-
    Shutting Down the System
-
    More Process-Related Commands
-
    Summing Up
-
-
+   
 * PART II: CONFIGURATION AND THE ENVIRONMENT
 
 11. THE ENVIRONMENT
