@@ -40,43 +40,44 @@ También se supone que no tienes experiencia en programación, pero no te preocu
 
 Este material se presenta en una secuencia cuidadosamente elegida, muy similar a un tutor sentado a su lado que lo guía. Muchos autores tratan este material de manera "sistemática", cubriendo exhaustivamente cada tema en orden. Esto tiene sentido desde la perspectiva de un escritor, pero puede ser muy confuso para los nuevos usuarios.
 
-Otro objetivo es familiarizarlo con la forma de pensar de Unix, que es diferente de la forma de pensar de Windows. En el camino, realizaremos algunos viajes paralelos para ayudarlo a comprender por qué ciertas cosas funcionan de la manera en quehacer y cómo llegaron de esa manera. Linux no es solo una pieza de software; También es una pequeña parte de la cultura Unix más grande, que tiene su propio idioma e historia. También podría lanzar un parloteo o dos.
+Otro objetivo es familiarizarlo con la forma de pensar de Unix, que es diferente de la forma de pensar de Windows. En el camino, realizaremos algunos viajes paralelos para ayudarlo a comprender por qué ciertas cosas funcionan de la manera en que hacer y cómo llegaron de esa manera. Linux no es solo una pieza de software; También es una pequeña parte de la cultura Unix más grande, que tiene su propio idioma e historia. También podría lanzar un parloteo o dos.
 
 Este libro está dividido en cuatro partes, cada una de las cuales cubre algunos aspectos de la experiencia de la línea de comandos.
 
-La Parte 1 , " Aprendiendo el Shell ", comienza nuestra exploración del lenguaje básico de la línea de comandos, incluyendo elementos como la estructura de los comandos, la navegación del sistema de archivos, la edición de la línea de comandos y la búsqueda de ayuda y documentación para los comandos.
-La Parte 2 , " Configuración y entorno ", cubre la edición de archivos de configuración que controlan el funcionamiento de la computadora desde la línea de comandos.
-La Parte 3 , “ Tareas comunes y herramientas esenciales ”, explora muchas de las tareas ordinarias que se realizan comúnmente desde la línea de comandos. Los sistemas operativos tipo Unix, como Linux, contienen muchos programas de línea de comandos "clásicos" que se utilizan para realizar operaciones potentes en los datos.
-La Parte 4 , “ Escritura de scripts de Shell ”, presenta la programación de shell, una técnica ciertamente rudimentaria pero fácil de aprender para automatizar muchas tareas informáticas comunes. Al aprender la programación de shell, se familiarizará con los conceptos que se pueden aplicar a muchos otros lenguajes de programación.
+**La Parte 1, "Aprendiendo el Shell"**, comienza nuestra exploración del lenguaje básico de la línea de comandos, incluyendo elementos como la estructura de los comandos, la navegación del sistema de archivos, la edición de la línea de comandos y la búsqueda de ayuda y documentación para los comandos.
 
-## CÓMO LEER ESTE LIBRO
+**La Parte 2, "Configuración y entorno"**, cubre la edición de archivos de configuración que controlan el funcionamiento de la computadora desde la línea de comandos.
+
+**La Parte 3, “Tareas comunes y herramientas esenciales”**, explora muchas de las tareas ordinarias que se realizan comúnmente desde la línea de comandos. Los sistemas operativos tipo Unix, como Linux, contienen muchos programas de línea de comandos "clásicos" que se utilizan para realizar operaciones potentes en los datos.
+
+**La Parte 4, “Escritura de scripts de Shell”**, presenta la programación de shell, una técnica ciertamente rudimentaria pero fácil de aprender para automatizar muchas tareas informáticas comunes. Al aprender la programación de shell, se familiarizará con los conceptos que se pueden aplicar a muchos otros lenguajes de programación.
+
+## CÓMO LEER ESTE LIBRO
 
 Comienza al principio del libro y síguelo hasta el final. No está escrito como un trabajo de referencia; Es realmente más como una historia con un principio, un medio y un final.
 
-Prerrequisitos
+### Prerrequisitos
 
 Para usar este libro, todo lo que necesitará es una instalación de Linux que funcione. Puede obtener esto de dos maneras:
 
-Instale Linux en una computadora (no tan nueva). No importa qué distribución elija, aunque la mayoría de las personas hoy en día comienzan con Ubuntu, Fedora u OpenSUSE. En caso de duda, pruebe Ubuntu primero. Instalar una distribución moderna de Linux puede ser ridículamente fácil o ridículamente difícil dependiendo de su hardware. Sugiero una computadora de escritorio que tenga un par de años y que tenga al menos 2 GB de RAM y 6 GB de espacio libre en el disco duro. Evite las computadoras portátiles y las redes inalámbricas si es posible, ya que a menudo son más difíciles de conseguir.
+**Instale Linux en una computadora (no tan nueva)**. No importa qué distribución elija, aunque la mayoría de las personas hoy en día comienzan con Ubuntu, Fedora u OpenSUSE. En caso de duda, pruebe Ubuntu primero. Instalar una distribución moderna de Linux puede ser ridículamente fácil o ridículamente difícil dependiendo de su hardware. Sugiero una computadora de escritorio que tenga un par de años y que tenga al menos 2 GB de RAM y 6 GB de espacio libre en el disco duro. Evite las computadoras portátiles y las redes inalámbricas si es posible, ya que a menudo son más difíciles de conseguir.
 
-Utilice un "CD en vivo" o una unidad flash USB. Una de las mejores cosas que puede hacer con muchas distribuciones de Linux es ejecutarlas directamente desde un CD-ROM o unidad flash USB sin instalarlas. Simplemente vaya a la configuración de su BIOS y configure su computadora para que arranque desde una unidad de CD-ROM o dispositivo USB y reinicie. Usar este método es una excelente manera de probar una computadorapara compatibilidad con Linux antes de la instalación. La desventaja es que puede ser lento en comparación con tener Linux instalado en su disco duro. Tanto Ubuntu como Fedora (entre otros) tienen versiones en vivo.
+**Utilice un “live CD” o USB flash drive**. Una de las mejores cosas que puede hacer con muchas distribuciones de Linux es ejecutarlas directamente desde un CD-ROM o unidad flash USB sin instalarlas. Simplemente vaya a la configuración de su BIOS y configure su computadora para que arranque desde una unidad de CD-ROM o dispositivo USB y reinicie. Usar este método es una excelente manera de probar una computadorapara compatibilidad con Linux antes de la instalación. La desventaja es que puede ser lento en comparación con tener Linux instalado en su disco duro. Tanto Ubuntu como Fedora (entre otros) tienen versiones en vivo.
 
 Independientemente de cómo instale Linux, necesitará tener privilegios ocasionales de superusuario (es decir, administrativos) para llevar a cabo las lecciones de este libro.
 
 Después de tener una instalación que funcione, comience a leer y siga junto con su propia computadora. La mayor parte del material de este libro es "práctico", ¡así que siéntate y comienza a escribir!
 
-POR QUÉ NO LO LLAMO "GNU / LINUX"
+```
+## POR QUÉ NO LO LLAMO "GNU/LINUX"
 
-En algunos sectores, es políticamente correcto llamar al sistema operativo Linux el "sistema operativo GNU / Linux". El problema con "Linux" es que no hay una forma completamente correcta de nombrarlo porque fue escrito por muchas personas diferentes en un vasto , esfuerzo de desarrollo distribuido. Técnicamente hablando, Linux es el nombre del núcleo del sistema operativo, nada más. El núcleo es muy importante, por supuesto, ya que hace que el sistema operativo funcione, pero no es suficiente para formar un sistema operativo completo.
+En algunos sectores, es políticamente correcto llamar al sistema operativo Linux el "sistema operativo GNU/Linux". El problema con "Linux" es que no hay una forma completamente correcta de nombrarlo porque fue escrito por muchas personas diferentes en un vasto, esfuerzo de desarrollo distribuido. Técnicamente hablando, Linux es el nombre del núcleo del sistema operativo, nada más. El núcleo es muy importante, por supuesto, ya que hace que el sistema operativo funcione, pero no es suficiente para formar un sistema operativo completo.
 
-Ingrese Richard Stallman, el genio-filósofo que fundó el movimiento de Software Libre, comenzó la Free Software Foundation, formó el Proyecto GNU, escribió la primera versión del Compilador C GNU (gcc), creó la Licencia Pública General de GNU (GPL), etc., etc., etc. Él insiste en que lo llame "GNU / Linux" para reflejar adecuadamente las contribuciones del Proyecto GNU. Si bien el Proyecto GNU es anterior al kernel de Linux y las contribuciones del proyecto son extremadamente merecedoras de reconocimiento, colocarlas en el nombre es injusto para todos los demás que hicieron contribuciones significativas. Además, creo que "Linux / GNU" sería más preciso desde el punto de vista técnico, ya que el núcleo se inicia primero y todo lo demás se ejecuta sobre él.
+Ingrese Richard Stallman, el genio-filósofo que fundó el movimiento de Software Libre, comenzó la Free Software Foundation, formó el Proyecto GNU, escribió la primera versión del Compilador C GNU (gcc), creó la Licencia Pública General de GNU (GPL), etc., etc., etc. Él insiste en que lo llame "GNU/Linux" para reflejar adecuadamente las contribuciones del Proyecto GNU. Si bien el Proyecto GNU es anterior al kernel de Linux y las contribuciones del proyecto son extremadamente merecedoras de reconocimiento, colocarlas en el nombre es injusto para todos los demás que hicieron contribuciones significativas. Además, creo que "Linux/GNU" sería más preciso desde el punto de vista técnico, ya que el núcleo se inicia primero y todo lo demás se ejecuta sobre él.
 
-En el uso popular, Linux se refiere al kernel y al resto del software libre y de código abierto que se encuentra en la distribución típica de Linux, es decir, todo el ecosistema de Linux, no solo los componentes de GNU. El mercado del sistema operativo parece preferir nombres de una palabra como DOS, Windows, macOS, Solaris, Irix y AIX. Elegí usar el formato popular. Sin embargo, si prefiere usar "GNU / Linux" en su lugar, realice una búsqueda y reemplazo mental mientras lee este libro. No me importará
+En el uso popular, Linux se refiere al kernel y al resto del software libre y de código abierto que se encuentra en la distribución típica de Linux, es decir, todo el ecosistema de Linux, no solo los componentes de GNU. El mercado del sistema operativo parece preferir nombres de una palabra como DOS, Windows, macOS, Solaris, Irix y AIX. Elegí usar el formato popular. Sin embargo, si prefiere usar "GNU/Linux" en su lugar, realice una búsqueda y reemplazo mental mientras lee este libro.
+```
 
-LO NUEVO EN LA SEGUNDA EDICIÓN
-Si bien la estructura básica y el contenido siguen siendo los mismos, esta edición de The Linux Command Line está salpicada de varios refinamientos, aclaraciones y modernizaciones, muchos de los cuales se basan en los comentarios de los lectores. Además, se destacan dos mejoras particulares. Primero, el libro ahora asume la versión bash 4. x , que no se usaba ampliamente en el momento del manuscrito original. Esta cuarta versión principal de bash agregó varios útilesnuevas características ahora cubiertas en esta edición. En segundo lugar, la Parte 4 , " Shell Scripting ", se ha mejorado para proporcionar mejores ejemplos de buenas prácticas de scripting. Las secuencias de comandos incluidas en la Parte 4 se han revisado para que sean más robustas, y también solucioné algunos errores ;-).
+## LO NUEVO EN LA SEGUNDA EDICIÓN
 
-SU OPINIÓN ES NECESARIA!
-Este libro es un proyecto en curso, como muchos proyectos de software de código abierto. Si encuentra un error técnico, envíeme una línea a bshotts@users.sourceforge.net .
-
-Asegúrese de indicar la edición exacta del libro que está leyendo. Sus cambios y sugerencias pueden entrar en futuras versiones.
+Si bien la estructura básica y el contenido siguen siendo los mismos, esta edición de The Linux Command Line está salpicada de varios refinamientos, aclaraciones y modernizaciones, muchos de los cuales se basan en los comentarios de los lectores. Además, se destacan dos mejoras particulares. Primero, el libro ahora asume la versión bash 4.x , que no se usaba ampliamente en el momento del manuscrito original. Esta cuarta versión principal de bash agregó varios características útiles nuevas  ahora cubiertas en esta edición. En segundo lugar, la Parte 4 , "Shell Scripting", se ha mejorado para proporcionar mejores ejemplos de buenas prácticas de scripting. Las secuencias de comandos incluidas en la Parte 4 se han revisado para que sean más robustas, y también solucioné algunos errores ;-).
