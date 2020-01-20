@@ -70,7 +70,7 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
 * PART I: LEARNING THE SHELL
 
-1 WHAT IS THE SHELL?
+1. WHAT IS THE SHELL?
 
    Terminal Emulators
    
@@ -82,12 +82,11 @@ Una vez que supere su ""shell shock,"" inicial, encontrará que la línea de com
    
    Summing Up
    
-2 NAVIGATION
-   
+2. NAVIGATION   
    Understanding the File System Tree
-The Current Working Directory
-Listing the Contents of a Directory
-Changing the Current Working Directory
+   The Current Working Directory
+   Listing the Contents of a Directory
+   Changing the Current Working Directory
 Summing Up
 3 EXPLORING THE SYSTEM
 More Fun with ls
