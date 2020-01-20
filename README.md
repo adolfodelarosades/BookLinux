@@ -1,6 +1,6 @@
 # The Linux Command Line, 2nd Edition
 
-<img src="/images/linux_portada.png">
+<img src="/images/linux_portada.jpg">
 
 by William E. Shotts
 
