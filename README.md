@@ -1,9 +1,15 @@
 # The Linux Command Line, 2nd Edition
 
+<img src="/images/linux_portada.png">
+
 by William E. Shotts
+
 Publisher: No Starch Press
+
 Release Date: February 2019
+
 ISBN: 9781593279523
+
 Topic: Linux
 
 ## Descripción del libro
