@@ -47,12 +47,12 @@ Para enumerar los archivos y directorios en el directorio de trabajo actual, uti
 Desktop  Documents  Music  Pictures  Public  Templates  Videos
 
 192:clientes-app adolfodelarosa$ ls
-README.md				                              browserslist				package.json
-Seccion02_PrimerosPasosEnAngular.md	        e2e					        src
-Seccion03_ComponenteClientes.md		            images					    tsconfig.app.json
-Seccion04_Backend_SpringAPI_REST.md	          karma.conf.js				tsconfig.json
-Seccion05_CRUDconSpringAPIRest.md	          node_modules				tsconfig.spec.json
-angular.json				                   package-lock.json		tslint.json
+README.md     browserslist				package.json
+Seccion02_PrimerosPasosEnAngular.md e2e					        src
+Seccion03_ComponenteClientes.md     images					    tsconfig.app.json
+Seccion04_Backend_SpringAPI_REST.md karma.conf.js				tsconfig.json
+Seccion05_CRUDconSpringAPIRest.md	  node_modules				tsconfig.spec.json
+angular.json				                package-lock.json		tslint.json
 ```
 
 En realidad, podemos usar el comando `ls` para enumerar el contenido de cualquier directorio, no solo el directorio de trabajo actual, y hay muchas otras cosas divertidas que también puede hacer. Pasaremos más tiempo con ls en el Capítulo 3 .
