@@ -45,15 +45,14 @@ Si presionamos la **flecha hacia arriba**, veremos que el comando anterior ingre
 
 Recupere el comando anterior presionando la **flecha hacia arriba** nuevamente. Si intentamos las **flechas izquierda y derecha**, veremos que podemos colocar el cursor en cualquier lugar de la línea de comando. Esto facilita la edición de comandos.
 
-```
-ALGUNAS PALABRAS SOBRE MICE Y FOCUS (ratones y enfoque)
+
+##### ALGUNAS PALABRAS SOBRE MICE Y FOCUS (ratones y enfoque)
 
 Si bien el shell se trata del teclado, también puede usar un mouse con su emulador de terminal. Un mecanismo integrado en el sistema X Window (el motor subyacente que hace funcionar la GUI) admite una técnica rápida de copiar y pegar. Si resalta un texto manteniendo presionado el botón izquierdo del mouse y arrastrando el mouse sobre él (o haciendo doble clic en una palabra), se copia en un búfer mantenido por X. Al presionar el botón central del mouse, el texto se pegará en La ubicación del cursor. Intentalo.
 
 No caigas en la tentación de usar CTRL-C y CTRL-V para copiar y pegar dentro de una ventana de terminal. Ellos no trabajan. Estos códigos de control tienen diferentes significados para el shell y se asignaron muchos años antes del lanzamiento de Microsoft Windows.
 
 Su entorno de escritorio gráfico (muy probablemente KDE o GNOME), en un esfuerzo por comportarse como Windows, probablemente tenga su política de enfoque establecida en "hacer clic para enfocar". Esto significa que para que una ventana se enfoque (se active), debe hacer clic en eso. Esto es contrario al comportamiento tradicional de X de "el foco sigue al mouse", lo que significa que una ventana obtiene el foco simplemente pasando el mouse sobre ella. La ventana no aparecerá en primer plano hasta que haga clic en ella, pero podrá recibir información. Establecer la política de enfoque en "el foco sigue al mouse" hará que la técnica de copiar y pegar sea aún más útil. Pruébelo si puede (algunos entornos de escritorio como la Unidad de Ubuntu ya no lo admiten). Creo que si le das una oportunidad, la preferirás. Encontrará esta configuración en el programa de configuración de su administrador de ventanas.
-````
 
 ## PRUEBE ALGUNOS COMANDOS SIMPLES
 
@@ -91,11 +90,10 @@ do lu ma mi ju vi sá
 192:clientes-app adolfodelarosa$ 
 ```
 
-```
-LA CONSOLA DETRÁS DE LA CORTINA
+##### LA CONSOLA DETRÁS DE LA CORTINA
 
 Incluso si no tenemos ningún emulador de terminal en ejecución, varias sesiones de terminal continúan ejecutándose detrás del escritorio gráfico. Podemos acceder a estas sesiones, llamadas consolas virtuales , presionando CTRL-ALT-F1 a través de CTRL-ALT-F6 en la mayoría de las distribuciones de Linux. Cuando se accede a una sesión, presenta un mensaje de inicio de sesión en el que podemos ingresar nuestro nombre de usuario y contraseña. Para cambiar de una consola virtual a otra, presione ALT-F1 a través de ALT-F6. En la mayoría de los sistemas, podemos volver al escritorio gráfico presionando ALT-F7.
-```
+
 
 Para ver la cantidad actual de espacio libre en nuestras unidades de disco, ingrese `df`.
 
