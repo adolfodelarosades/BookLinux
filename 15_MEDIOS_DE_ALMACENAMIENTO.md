@@ -8,31 +8,33 @@ Para llevar a cabo los ejercicios en este capítulo, utilizaremos una unidad fla
 
 Veremos los siguientes comandos:
 
-montar Montar un sistema de archivos
+`mount` Montar un sistema de archivos
 
-desmontar Desmontar un sistema de archivos
+`umount` Desmontar un sistema de archivos
 
-fsck Verificar y reparar un sistema de archivos
+`fsck` Verificar y reparar un sistema de archivos
 
-fdisk Manipular tabla de particiones de disco
+`fdisk` Manipular tabla de particiones de disco
 
-mkfs Crear un sistema de archivos
+`mkfs` Crear un sistema de archivos
 
-dd Convertir y copiar un archivo
+`dd` Convertir y copiar un archivo
 
-genisoimage (mkisofs) Cree un archivo de imagen ISO 9660
+`genisoimage (mkisofs)` Cree un archivo de imagen ISO 9660
 
-wodim (cdrecord) Escribir datos en medios de almacenamiento óptico
+`wodim (cdrecord)` Escribir datos en medios de almacenamiento óptico
 
-md5sum Calcular una suma de comprobación MD5
+`md5sum` Calcular una suma de comprobación MD5
 
-MONTAJE Y DESMONTAJE DE DISPOSITIVOS DE ALMACENAMIENTO
+## MONTAJE Y DESMONTAJE DE DISPOSITIVOS DE ALMACENAMIENTO
+
 Los avances recientes en el escritorio de Linux han hecho que la administración de dispositivos de almacenamiento sea extremadamente fácil para los usuarios de escritorio. En su mayor parte, conectamos un dispositivo a nuestro sistema y "simplemente funciona". En los viejos tiempos (por ejemplo, 2004), estas cosas tenían que hacerse manualmente. En sistemas que no son de escritorio (es decir, servidores), este sigue siendo un procedimiento en gran parte manual, ya que los servidores a menudo tienen necesidades de almacenamiento extremas y requisitos de configuración complejos.
 
-El primer paso para administrar un dispositivo de almacenamiento es conectar el dispositivo al árbol del sistema de archivos. Este proceso, llamado montaje , permite que el dispositivo interactúe con el sistema operativo. Como recordamos del Capítulo 2 , los sistemas operativos tipo Unix (como Linux) mantienen un único árbol de sistema de archivos con dispositivos conectados en varios puntos. Esto contrasta con otros sistemas operativos como Windows que mantienen árboles de sistema de archivos separados para cada dispositivo (por ejemplo, C: \ , D: \ , etc.).
+El primer paso para administrar un dispositivo de almacenamiento es conectar el dispositivo al árbol del sistema de archivos (file system tree). Este proceso, llamado *mounting* (montaje) , permite que el dispositivo interactúe con el sistema operativo. Como recordamos del Capítulo 2, los sistemas operativos tipo Unix (como Linux) mantienen un único árbol de sistema de archivos con dispositivos conectados en varios puntos. Esto contrasta con otros sistemas operativos como Windows que mantienen árboles de sistema de archivos separados para cada dispositivo (por ejemplo, `C:\`, `D:\`, etc.).
 
-Un archivo llamado / etc / fstab (abreviatura de "tabla del sistema de archivos") enumera los dispositivos (generalmente las particiones del disco duro) que se deben montar en el momento del arranque. Aquí hay un ejemplo de archivo / etc / fstab de un sistema anterior de Fedora:
+Un archivo llamado `/etc/fstab` (abreviatura de "file system table" (tabla del sistema de archivos) enumera los dispositivos (generalmente las particiones del disco duro) que se deben montar en el momento del arranque. Aquí hay un ejemplo de archivo `/etc/fstab` de un sistema anterior de Fedora:
 
+```sh
 LABEL = / 12 / ext4 por defecto 1 1
 LABEL = / home / home ext4 por defecto 1 2
 LABEL = / boot / boot ext4 por defecto 1 2
@@ -41,60 +43,31 @@ devpts / dev / pts devpts gid = 5, mode = 620 0 0
 sysfs / sys sysfs valores predeterminados 0 0
 proc / proc proc valores predeterminados 0 0
 LABEL = SWAP-sda3 swap swap valores predeterminados 0 0
+```
 
 La mayoría de los sistemas de archivos enumerados en este archivo de ejemplo son virtuales y no son aplicables a nuestra discusión. Para nuestros propósitos, los interesantes son los primeros tres.
 
+```sh
 LABEL = / 12 / ext4 por defecto 1 1
 LABEL = / home / home ext4 por defecto 1 2
 LABEL = / boot / boot ext4 por defecto 1 2
+```
 
 Estas son las particiones del disco duro. Cada línea del archivo consta de seis campos, como se describe en la Tabla 15-1 .
 
-Tabla 15-1: / etc / fstab Campos
+**Tabla 15-1**: Campos `/etc/fstab` 
 
-Campo
+Contenido Campo | Descripción
+----------------|------------
+1 Device        | Tradicionalmente, este campo contiene el nombre real de un archivo de dispositivo asociado con el dispositivo físico, como `/dev/sda1` (la primera partición del primer disco duro detectado). Pero con las computadoras actuales, que tienen muchos dispositivos que se pueden conectar en caliente (como unidades USB), muchas distribuciones modernas de Linux asocian un dispositivo con una etiqueta de texto. Esta etiqueta (que se agrega al medio de almacenamiento cuando se formatea) puede ser una etiqueta de texto simple o un UUID (Universally Unique Identifier (Identificador único universal)) generado de forma aleatoria. El sistema operativo lee esta etiqueta cuando el dispositivo está conectado al sistema. De esa manera, no importa qué archivo de dispositivo esté asignado al dispositivo físico real, todavía puede identificarse correctamente.
+2 Mount point | El directorio donde está conectado el dispositivo al file system tree.
+3 File system type | Linux permite montar muchos tipos de sistemas de archivos. La mayoría de los sistemas de archivos Linux nativos son el Fourth Extended File System (`ext4`), pero muchos otros son compatibles, como FAT16 (`msdos`), FAT32 (`vfat`), NTFS (`ntfs`), CD-ROM (`iso9660`), etc.
+4 Options | Los sistemas de archivos se pueden montar con varias opciones. Es posible, por ejemplo, montar sistemas de archivos como de solo lectura o evitar que se ejecuten programas desde ellos (una característica de seguridad útil para medios extraíbles).
+5 Frequency | Un número único que especifica si se debe hacer una copia de seguridad de un sistema de archivos con el comando `dump`.
+6 Order | Un número único que especifica en qué orden deben verificarse los sistemas de archivos con el comando `fsck`.
 
-Contenido
+### Ver una Lista de los Sistemas de Archivos Montados (Mounted File Systems)
 
-Descripción
-
-1
-
-Dispositivo
-
-Tradicionalmente, este campo contiene el nombre real de un archivo de dispositivo asociado con el dispositivo físico, como / dev / sda1 (la primera partición del primer disco duro detectado). Pero con las computadoras actuales, que tienen muchos dispositivos que se pueden conectar en caliente (como unidades USB), muchas distribuciones modernas de Linux asocian un dispositivo con una etiqueta de texto. Esta etiqueta (que se agrega al medio de almacenamiento cuando se formatea) puede ser una etiqueta de texto simple o un UUID generado de forma aleatoria (Identificador único universal). El sistema operativo lee esta etiqueta cuando el dispositivo está conectado al sistema. De esa manera, no importa qué archivo de dispositivo esté asignado al dispositivo físico real, todavía puede identificarse correctamente.
-
-2
-
-punto de montaje
-
-El directorio donde está conectado el dispositivo al árbol del sistema de archivos.
-
-3
-
-Tipo de sistema de archivos
-
-Linux permite montar muchos tipos de sistemas de archivos. La mayoría de los sistemas de archivos Linux nativos son el Cuarto Sistema de Archivos Extendido ( ext4 ), pero muchos otros son compatibles, como FAT16 ( msdos ), FAT32 ( vfat ), NTFS ( ntfs ), CD-ROM ( iso9660 ), etc.
-
-4 4
-
-Opciones
-
-Los sistemas de archivos se pueden montar con varias opciones. Es posible, por ejemplo, montar sistemas de archivos como de solo lectura o evitar que se ejecuten programas desde ellos (una característica de seguridad útil para medios extraíbles).
-
-5 5
-
-Frecuencia
-
-Un número único que especifica si se debe hacer una copia de seguridad de un sistema de archivos con el comando dump .
-
-6 6
-
-Orden
-
-Un número único que especifica en qué orden deben verificarse los sistemas de archivos con el comando fsck .
-
-Ver una lista de sistemas de archivos montados
 El comando mount se usa para montar sistemas de archivos. Al ingresar el comando sin argumentos, se mostrará una lista de los sistemas de archivos actualmente montados.
 
 [me @ linuxbox ~] $ mount
