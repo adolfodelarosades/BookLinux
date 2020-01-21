@@ -8,23 +8,23 @@ Para llevar a cabo los ejercicios en este capítulo, utilizaremos una unidad fla
 
 Veremos los siguientes comandos:
 
-`mount` Montar un sistema de archivos
+**`mount`** Montar un sistema de archivos
 
-`umount` Desmontar un sistema de archivos
+**`umount`** Desmontar un sistema de archivos
 
-`fsck` Verificar y reparar un sistema de archivos
+**`fsck`** Verificar y reparar un sistema de archivos
 
-`fdisk` Manipular tabla de particiones de disco
+**`fdisk`** Manipular tabla de particiones de disco
 
-`mkfs` Crear un sistema de archivos
+**`mkfs`** Crear un sistema de archivos
 
-`dd` Convertir y copiar un archivo
+**`dd`** Convertir y copiar un archivo
 
-`genisoimage (mkisofs)` Cree un archivo de imagen ISO 9660
+**`genisoimage (mkisofs)`** Cree un archivo de imagen ISO 9660
 
-`wodim (cdrecord)` Escribir datos en medios de almacenamiento óptico
+**`wodim (cdrecord)`** Escribir datos en medios de almacenamiento óptico
 
-`md5sum` Calcular una suma de comprobación MD5
+**`md5sum`** Calcular una suma de comprobación MD5
 
 ## MONTAJE Y DESMONTAJE DE DISPOSITIVOS DE ALMACENAMIENTO
 
