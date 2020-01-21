@@ -35,24 +35,23 @@ El primer paso para administrar un dispositivo de almacenamiento es conectar el 
 Un archivo llamado `/etc/fstab` (abreviatura de "file system table" (tabla del sistema de archivos) enumera los dispositivos (generalmente las particiones del disco duro) que se deben montar en el momento del arranque. Aquí hay un ejemplo de archivo `/etc/fstab` de un sistema anterior de Fedora:
 
 ```sh
-LABEL = / 12 / ext4 por defecto 1 1
-LABEL = / home / home ext4 por defecto 1 2
-LABEL = / boot / boot ext4 por defecto 1 2
-tmpfs / dev / shm tmpfs por defecto 0 0
-devpts / dev / pts devpts gid = 5, mode = 620 0 0
-sysfs / sys sysfs valores predeterminados 0 0
-proc / proc proc valores predeterminados 0 0
-LABEL = SWAP-sda3 swap swap valores predeterminados 0 0
+LABEL=/12         /                       ext4    defaults        1 1
+LABEL=/home       /home                   ext4    defaults        1 2
+LABEL=/boot       /boot                   ext4    defaults        1 2
+tmpfs             /dev/shm                tmpfs   defaults        0 0
+devpts            /dev/pts                devpts  gid=5,mode=620  0 0
+sysfs             /sys                    sysfs   defaults        0 0
+proc              /proc                   proc    defaults        0 0
+LABEL=SWAP-sda3   swap                    swap    defaults        0 0
 ```
 
 La mayoría de los sistemas de archivos enumerados en este archivo de ejemplo son virtuales y no son aplicables a nuestra discusión. Para nuestros propósitos, los interesantes son los primeros tres.
 
 ```sh
-LABEL = / 12 / ext4 por defecto 1 1
-LABEL = / home / home ext4 por defecto 1 2
-LABEL = / boot / boot ext4 por defecto 1 2
+LABEL=/12         /                       ext4    defaults        1 1
+LABEL=/home       /home                   ext4    defaults        1 2
+LABEL=/boot       /boot                   ext4    defaults        1 2
 ```
-
 Estas son las particiones del disco duro. Cada línea del archivo consta de seis campos, como se describe en la Tabla 15-1 .
 
 **Tabla 15-1**: Campos `/etc/fstab` 
@@ -68,50 +67,52 @@ Contenido Campo | Descripción
 
 ### Ver una Lista de los Sistemas de Archivos Montados (Mounted File Systems)
 
-El comando mount se usa para montar sistemas de archivos. Al ingresar el comando sin argumentos, se mostrará una lista de los sistemas de archivos actualmente montados.
+El comando `mount` se usa para montar file systems (sistemas de archivos). Al ingresar el comando sin argumentos, se mostrará una lista de los sistemas de archivos actualmente montados.
 
-[me @ linuxbox ~] $ mount
-/ dev / sda2 on / type ext4 (rw)
-proc on / proc type proc (rw)
-sysfs on / sys type sysfs (rw)
-devpts on / dev / pts type devpts (rw, gid = 5, mode = 620)
-/ dev / sda5 on / home type ext4 (rw)
-/ dev / sda1 on / boot type ext4 (rw)
-tmpfs on / dev / shm type tmpfs (rw)
-none on / proc / sys / fs / binfmt_misc tipo binfmt_misc (rw)
-sunrpc on / var / lib / nfs / rpc_pipefs tipo rpc_pipefs (rw)
-fusectl on / sys / fs / fuse / connections tipo fusectl (rw)
-/ dev / sdd1 on / media / tipo de disco vfat (rw, nosuid, nodev, noatime,
-uhelper = hal, uid = 500, utf8, nombre corto = inferior)
-twin4: / musicbox on / misc / musicbox tipo nfs4 (rw, addr = 192.168.1.4)
-
-El formato de la lista es el siguiente: dispositivo en tipo de punto de montaje tipo_de_sistema (opciones) . Por ejemplo, la primera línea muestra que el dispositivo / dev / sda2 está montado como el sistema de archivos raíz, es del tipo ext4 y es legible y escribible (la opción rw ). Este listado también tiene dos entradas interesantes al final de la lista. La penúltima entrada muestra una tarjeta de memoria SD de 2GB en un lector de tarjetas montado en / media / disk , y la última entrada es una unidad de red montada en / misc / musicbox .
+```sh
+[me@linuxbox ~]$ mount
+/dev/sda2 on / type ext4 (rw)
+proc on /proc type proc (rw)
+sysfs on /sys type sysfs (rw)
+devpts on /dev/pts type devpts (rw,gid=5,mode=620)
+/dev/sda5 on /home type ext4 (rw)
+/dev/sda1 on /boot type ext4 (rw)
+tmpfs on /dev/shm type tmpfs (rw)
+none on /proc/sys/fs/binfmt_misc type binfmt_misc (rw)
+sunrpc on /var/lib/nfs/rpc_pipefs type rpc_pipefs (rw)
+fusectl on /sys/fs/fuse/connections type fusectl (rw)
+/dev/sdd1 on /media/disk type vfat (rw,nosuid,nodev,noatime,
+uhelper=hal,uid=500,utf8,shortname=lower)
+twin4:/musicbox on /misc/musicbox type nfs4 (rw,addr=192.168.1.4)
+```
+El formato de la lista es el siguiente: `device on mount_point type filesystem_type (options)`. Por ejemplo, la primera línea muestra que el dispositivo `/dev/sda2` está montado como el sistema de archivos raíz, es del tipo ext4 y es readable y writable (la opción rw). Este listado también tiene dos entradas interesantes al final de la lista. La penúltima entrada muestra una tarjeta de memoria SD de 2GB en un lector de tarjetas montado en `/media/disk`, y la última entrada es una unidad de red montada en `/misc/musicbox`.
 
 Para nuestro primer experimento, trabajaremos con un CD-ROM. Primero, veamos un sistema antes de insertar un CD-ROM.
 
-[me @ linuxbox ~] $ mount
-/ dev / mapper / VolGroup00-LogVol00 on / type ext4 (rw)
-proc on / proc type proc (rw)
-sysfs on / sys type sysfs (rw)
-devpts on / dev / pts type devpts ( rw, gid = 5, mode = 620)
-/ dev / sda1 on / boot type ext4 (rw)
-tmpfs on / dev / shm type tmpfs (rw)
-none on / proc / sys / fs / binfmt_misc type binfmt_misc (rw)
-sunrpc on / var / lib / nfs / rpc_pipefs tipo rpc_pipefs (rw)
-
+```sh
+[me@linuxbox ~]$ mount
+/dev/mapper/VolGroup00-LogVol00 on / type ext4 (rw)
+proc on /proc type proc (rw)
+sysfs on /sys type sysfs (rw)
+devpts on /dev/pts type devpts (rw,gid=5,mode=620)
+/dev/sda1 on /boot type ext4 (rw)
+tmpfs on /dev/shm type tmpfs (rw)
+none on /proc/sys/fs/binfmt_misc type binfmt_misc (rw)
+sunrpc on /var/lib/nfs/rpc_pipefs type rpc_pipefs (rw)
+```
 Este listado es de un sistema CentOS, que está utilizando LVM (Logical Volume Manager) para crear su sistema de archivos raíz. Al igual que muchas distribuciones modernas de Linux, este sistema intentará montar automáticamente el CD-ROM después de la inserción. Después de insertar el disco, vemos lo siguiente:
-
-[me @ linuxbox ~] $ mount
-/ dev / mapper / VolGroup00-LogVol00 on / type ext4 (rw)
-proc on / proc type proc (rw)
-sysfs on / sys type sysfs (rw)
-devpts on / dev / pts type devpts ( rw, gid = 5, mode = 620)
-/ dev / hda1 on / boot type ext4 (rw)
-tmpfs on / dev / shm type tmpfs (rw)
-none on / proc / sys / fs / binfmt_misc type binfmt_misc (rw)
-sunrpc on / var / lib / nfs / rpc_pipefs tipo rpc_pipefs (rw)
-/ dev / sdc en /media/live-1.0.10-8 tipo iso9660 (ro, noexec, nosuid, nodev, uid = 500)
-
+```sh
+[me@linuxbox ~]$ mount
+/dev/mapper/VolGroup00-LogVol00 on / type ext4 (rw)
+proc on /proc type proc (rw)
+sysfs on /sys type sysfs (rw)
+devpts on /dev/pts type devpts (rw,gid=5,mode=620)
+/dev/hda1 on /boot type ext4 (rw)
+tmpfs on /dev/shm type tmpfs (rw)
+none on /proc/sys/fs/binfmt_misc type binfmt_misc (rw)
+sunrpc on /var/lib/nfs/rpc_pipefs type rpc_pipefs (rw)
+/dev/sdc on /media/live-1.0.10-8 type iso9660 (ro,noexec,nosuid,nodev,uid=500)
+```
 Después de insertar el disco, vemos la misma lista que antes con una entrada adicional. Al final de la lista, vemos que el CD-ROM (que es dispositivo / dev / sdc en este sistema) se ha montado en /media/live-1.0.10-8 y es del tipo iso9660 (un CD-ROM). Para los fines de nuestro experimento, estamos interesados ​​en el nombre del dispositivo. Cuando realice este experimento usted mismo, el nombre del dispositivo probablemente será diferente.
 
 ADVERTENCIA
