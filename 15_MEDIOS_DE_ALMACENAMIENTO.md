@@ -113,54 +113,66 @@ none on /proc/sys/fs/binfmt_misc type binfmt_misc (rw)
 sunrpc on /var/lib/nfs/rpc_pipefs type rpc_pipefs (rw)
 /dev/sdc on /media/live-1.0.10-8 type iso9660 (ro,noexec,nosuid,nodev,uid=500)
 ```
-Después de insertar el disco, vemos la misma lista que antes con una entrada adicional. Al final de la lista, vemos que el CD-ROM (que es dispositivo / dev / sdc en este sistema) se ha montado en /media/live-1.0.10-8 y es del tipo iso9660 (un CD-ROM). Para los fines de nuestro experimento, estamos interesados ​​en el nombre del dispositivo. Cuando realice este experimento usted mismo, el nombre del dispositivo probablemente será diferente.
+Después de insertar el disco, vemos la misma lista que antes con una entrada adicional. Al final de la lista, vemos que el CD-ROM (que es dispositivo `/dev/sdc` en este sistema) se ha montado en `/media/live-1.0.10-8` y es del tipo `iso9660` (un CD-ROM). Para los fines de nuestro experimento, estamos interesados en el nombre del dispositivo. Cuando realice este experimento usted mismo, el nombre del dispositivo probablemente será diferente.
 
-ADVERTENCIA
+##### ADVERTENCIA
 
-En los ejemplos que siguen, es de vital importancia que preste mucha atención a los nombres reales de los dispositivos en uso en su sistema y no use los nombres utilizados en este texto. También tenga en cuenta que los CD de audio no son lo mismo que los CD-ROM. Los CD de audio no contienen sistemas de archivos y, por lo tanto, no se pueden montar en el sentido habitual.
+*En los ejemplos que siguen, es de vital importancia que preste mucha atención a los nombres reales de los dispositivos en uso en su sistema y no use los nombres utilizados en este texto. También tenga en cuenta que los CD de audio no son lo mismo que los CD-ROM. Los CD de audio no contienen sistemas de archivos y, por lo tanto, no se pueden montar en el sentido habitual.*
 
-Ahora que tenemos el nombre del dispositivo de la unidad de CD-ROM, desmontemos el disco y lo volvamos a montar en otra ubicación en el árbol del sistema de archivos. Para hacer esto, nos convertimos en el superusuario (usando el comando apropiado para nuestro sistema) y desmontamos el disco con el comando umount (observe la ortografía).
+Ahora que tenemos el nombre del dispositivo de la unidad de CD-ROM, desmontemos el disco y lo volvamos a montar en otra ubicación en el árbol del sistema de archivos. Para hacer esto, nos convertimos en el superusuario (usando el comando apropiado para nuestro sistema) y desmontamos el disco con el comando `umount` (observe la ortografía).
 
-[me @ linuxbox ~] $ su -
-Contraseña:
-[root @ linuxbox ~] # umount / dev / sdc
+```sh
+[me@linuxbox ~]$ su -
+Password:
+[root@linuxbox ~]# umount /dev/sdc
+```
 
-El siguiente paso es crear un nuevo punto de montaje para el disco. Un punto de montaje es simplemente un directorio en algún lugar del árbol del sistema de archivos. No tiene nada de especial. Ni siquiera tiene que ser un directorio vacío, aunque si monta un dispositivo en un directorio no vacío, no podrá ver los contenidos anteriores del directorio hasta que desmonte el dispositivo. Para nuestros propósitos, crearemos un nuevo directorio.
+El siguiente paso es crear un nuevo *punto de montaje* (mount point) para el disco. Un punto de montaje es simplemente un directorio en algún lugar del árbol del sistema de archivos. No tiene nada de especial. Ni siquiera tiene que ser un directorio vacío, aunque si monta un dispositivo en un directorio no vacío, no podrá ver los contenidos anteriores del directorio hasta que desmonte el dispositivo. Para nuestros propósitos, crearemos un nuevo directorio.
 
-[root @ linuxbox ~] # mkdir / mnt / cdrom
+```sh
+[root@linuxbox ~]# mkdir /mnt/cdrom
+```
 
-Finalmente, montamos el CD-ROM en el nuevo punto de montaje. La opción -t se usa para especificar el tipo de sistema de archivos.
+Finalmente, montamos el CD-ROM en el nuevo punto de montaje. La opción `-t` se usa para especificar el tipo de sistema de archivos.
 
-[root @ linuxbox ~] # mount -t iso9660 / dev / sdc / mnt / cdrom
-
+```sh
+[root@linuxbox ~]# mount -t iso9660 /dev/sdc /mnt/cdrom
+```
 Luego, podemos examinar el contenido del CD-ROM a través del nuevo punto de montaje.
 
-[root @ linuxbox ~] # cd / mnt / cdrom
-[root @ linuxbox cdrom] # ls
+```sh
+[root@linuxbox ~]# cd /mnt/cdrom
+[root@linuxbox cdrom]# ls
+```
 
 Observe lo que sucede cuando intentamos desmontar el CD-ROM.
 
-[root @ linuxbox cdrom] # umount / dev / sdc
-umount: / mnt / cdrom: el dispositivo está ocupado
+```sh
+[root@linuxbox cdrom]# umount /dev/sdc
+umount: /mnt/cdrom: device is busy
+```
 
 ¿Por qué es esto? La razón es que no podemos desmontar un dispositivo si alguien o algún proceso está utilizando el dispositivo. En este caso, cambiamos nuestro directorio de trabajo al punto de montaje para el CD-ROM, lo que hace que el dispositivo esté ocupado. Podemos remediar fácilmente el problema cambiando el directorio de trabajo a otro que no sea el punto de montaje.
 
-[root @ linuxbox cdrom] # cd
-[root @ linuxbox ~] # umount / dev / hdc
+```sh
+[root@linuxbox cdrom]# cd
+[root@linuxbox ~]# umount /dev/hdc
+```
 
 Ahora el dispositivo se desmonta con éxito.
 
-POR QUÉ EL DESMONTAJE ES IMPORTANTE
+##### POR QUÉ EL DESMONTAJE ES IMPORTANTE
 
-Si observa el resultado del comando gratuito , que muestra estadísticas sobre el uso de la memoria, verá una estadística llamada buffers. Los sistemas informáticos están diseñados para funcionar lo más rápido posible. Uno de los impedimentos para la velocidad del sistema son los dispositivos lentos. Las impresoras son un buen ejemplo. Incluso la impresora más rápida es extremadamente lenta según los estándares de la computadora. Una computadora sería muy lenta si tuviera que detenerse y esperar a que una impresora termine de imprimir una página. En los primeros días de las PC (antes de la multitarea), este era un problema real. Si estaba trabajando en una hoja de cálculo o documento de texto, la computadora se detendría y no estaría disponible cada vez que imprima. La computadora enviaba los datos a la impresora tan rápido como la impresora podía aceptarlos, pero era muy lenta porque las impresoras no imprimen muy rápido. Este problema se resolvió con el advenimiento del búfer de la impresora, un dispositivo que contiene memoria RAM que se ubicaría entre la computadora y la impresora. Con el búfer de la impresora en su lugar, la computadora enviaría la salida de la impresora al búfer, y se almacenaría rápidamente en la RAM rápida para que la computadora pudiera volver al trabajo sin esperar. Mientras tanto, el buffer de la impresora sería poco a poco poner en cola los datos a la impresora de la memoria del búfer a la velocidad a la que la impresora podría aceptarlo.
+Si observa el resultado del comando `free`, que muestra estadísticas sobre el uso de la memoria, verá una estadística llamada `buffers`. Los sistemas informáticos están diseñados para funcionar lo más rápido posible. Uno de los impedimentos para la velocidad del sistema son los dispositivos lentos. Las impresoras son un buen ejemplo. Incluso la impresora más rápida es extremadamente lenta según los estándares de la computadora. Una computadora sería muy lenta si tuviera que detenerse y esperar a que una impresora termine de imprimir una página. En los primeros días de las PC (antes de la multitarea), este era un problema real. Si estaba trabajando en una hoja de cálculo o documento de texto, la computadora se detendría y no estaría disponible cada vez que imprima. La computadora enviaba los datos a la impresora tan rápido como la impresora podía aceptarlos, pero era muy lenta porque las impresoras no imprimen muy rápido. Este problema se resolvió con el advenimiento del búfer de la impresora, un dispositivo que contiene memoria RAM que se ubicaría entre la computadora y la impresora. Con el búfer de la impresora en su lugar, la computadora enviaría la salida de la impresora al búfer, y se almacenaría rápidamente en la RAM rápida para que la computadora pudiera volver al trabajo sin esperar. Mientras tanto, el buffer de la impresora sería poco a poco poner en cola los datos a la impresora de la memoria del búfer a la velocidad a la que la impresora podría aceptarlo.
 
 Esta idea de almacenamiento en búfer se usa ampliamente en las computadoras para hacerlas más rápidas. No permita que la necesidad de leer o escribir datos ocasionalmente desde o hacia dispositivos lentos impida la velocidad del sistema. Los sistemas operativos almacenan los datos que se han leído y se escribirán en los dispositivos de almacenamiento en la memoria durante el mayor tiempo posible antes de tener que interactuar realmente con el dispositivo más lento. En un sistema Linux, por ejemplo, notará que el sistema parece llenar memoria mientras más tiempo se usa. Esto no significa que Linux esté "usando" toda la memoria; significa que Linux está aprovechando toda la memoria disponible para hacer tanto almacenamiento en búfer como sea posible.
 
 Este almacenamiento en búfer permite que la escritura en dispositivos de almacenamiento se realice muy rápidamente porque la escritura en el dispositivo físico se aplaza para un tiempo futuro. Mientras tanto, los datos destinados al dispositivo se acumulan en la memoria. De vez en cuando, el sistema operativo escribirá estos datos en el dispositivo físico.
 
-Desmontar un dispositivo implica escribir todos los datos restantes en el dispositivo para que pueda eliminarse de forma segura. Si el dispositivo se retira sin desmontarlo primero, existe la posibilidad de que no se hayan transferido todos los datos destinados al dispositivo. En algunos casos, estos datos pueden incluir actualizaciones vitales del directorio, lo que conducirá a la corrupción del sistema de archivos , una de las peores cosas que pueden suceder en una computadora.
+Desmontar un dispositivo implica escribir todos los datos restantes en el dispositivo para que pueda eliminarse de forma segura. Si el dispositivo se retira sin desmontarlo primero, existe la posibilidad de que no se hayan transferido todos los datos destinados al dispositivo. En algunos casos, estos datos pueden incluir actualizaciones vitales del directorio, lo que conducirá a la *corrupción del sistema de archivos* (file system corruption), una de las peores cosas que pueden suceder en una computadora.
 
-Determinar nombres de dispositivos
+### Determinar nombres de dispositivos
+*********************************************************
 A veces es difícil determinar el nombre de un dispositivo. En los viejos tiempos, no fue muy difícil. Un dispositivo siempre estaba en el mismo lugar y no cambiaba. A los sistemas tipo Unix les gusta así. Cuando se desarrolló Unix, "cambiar una unidad de disco" implicaba usar una carretilla elevadora para eliminar un lavadodispositivo del tamaño de una máquina desde la sala de computadoras. En los últimos años, la configuración típica de hardware de escritorio se ha vuelto bastante dinámica, y Linux ha evolucionado para ser más flexible que sus antepasados.
 
 En los ejemplos de la sección anterior, aprovechamos la capacidad del escritorio moderno de Linux para montar "automáticamente" el dispositivo y luego determinar el nombre después del hecho. Pero, ¿qué sucede si estamos administrando un servidor o algún otro entorno donde esto no ocurre? ¿Cómo podemos resolverlo?
