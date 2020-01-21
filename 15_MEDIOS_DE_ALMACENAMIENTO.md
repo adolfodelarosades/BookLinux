@@ -464,42 +464,58 @@ Después de tener un archivo de imagen, podemos grabarlo en nuestro medio óptic
 
 ### Montaje de una imagen ISO directamente
 
-Hay un truco que podemos usar para montar una imagen ISO mientras todavía está en nuestro disco duro y tratarla como si ya estuviera en un medio óptico. Al agregar la opción -o loop para montar (junto con el tipo de sistema de archivos -t iso9660 requerido ), podemos montar el archivo de imagen como si fuera un dispositivo y adjuntarlo al árbol del sistema de archivos.
+Hay un truco que podemos usar para montar una imagen ISO mientras todavía está en nuestro disco duro y tratarla como si ya estuviera en un medio óptico. Al agregar la opción `-o` loop para montar (junto con el tipo de sistema de archivos `-t` `iso9660` requerido ), podemos montar el archivo de imagen como si fuera un dispositivo y adjuntarlo al árbol del sistema de archivos.
 
-mkdir / mnt / iso_image
-mount -t iso9660 -o loop image.iso / mnt / iso_image
+```sh
+mkdir /mnt/iso_image
+mount -t iso9660 -o loop image.iso /mnt/iso_image
+```
 
-En este ejemplo, creamos un punto de montaje llamado / mnt / iso_image y luego montamos el archivo de imagen image.iso en ese punto de montaje. Después de montar la imagen, puede tratarse como si fuera un CD-ROM o DVD real. Recuerde desmontar la imagen cuando ya no sea necesaria .
+En este ejemplo, creamos un punto de montaje llamado `/mnt/iso_image` y luego montamos el archivo de imagen `image.iso` en ese punto de montaje. Después de montar la imagen, puede tratarse como si fuera un CD-ROM o DVD real. Recuerde desmontar la imagen cuando ya no sea necesaria .
 
-Poner en blanco un CD-ROM regrabable
-Necesidades de medios regrabables CD-RW a ser borrados o borradas antes de que pueda ser reutilizado. Para hacer esto, podemos usar wodim , especificando el nombre del dispositivo para la grabadora de CD y el tipo de supresión que se realizará. El programa wodim ofrece varios tipos. El más mínimo (y más rápido) es el tipo "rápido".
+### Poner en blanco un CD-ROM regrabable
 
-wodim dev = / dev / cdrw blank = rápido
+Necesidades de medios regrabables CD-RW a ser borrados o *blanked* antes de que pueda ser reutilizado. Para hacer esto, podemos usar `wodim`, especificando el nombre del dispositivo para la grabadora de CD y el tipo de supresión que se realizará. El programa `wodim` ofrece varios tipos. El más mínimo (y más rápido) es el tipo "fast (rápido)".
 
-Escribir una imagen
-Para escribir una imagen, nuevamente usamos wodim , especificando el nombre del dispositivo de escritura de medios ópticos y el nombre del archivo de imagen.
+```sh
+wodim dev=/dev/cdrw blank=fast
+```
 
-wodim dev = / dev / cdrw image.iso
+### Escribir una imagen
 
-Además del nombre del dispositivo y el archivo de imagen, wodim admite un gran conjunto de opciones. Dos comunes son -v para salida detallada y -dao , que escribe el disco en modo disco a la vez . Este modo debe usarse si está preparando un disco para reproducción comercial. El modo predeterminado para wodim es track-at-once , que es útil para grabar pistas de música.
+Para escribir una imagen, nuevamente usamos `wodim`, especificando el nombre del dispositivo de escritura de medios ópticos y el nombre del archivo de imagen.
 
-RESUMIENDO
+```sh
+wodim dev=/dev/cdrw image.iso
+```
+
+Además del nombre del dispositivo y el archivo de imagen, `wodim` admite un gran conjunto de opciones. Dos comunes son `-v` para salida detallada y `-dao`, que escribe el disco en modo disco a la vez. Este modo debe usarse si está preparando un disco para reproducción comercial. El modo predeterminado para `wodim` es *track-at-once*, que es útil para grabar pistas de música.
+
+## RESUMIENDO
+
 En este capítulo, analizamos las tareas básicas de administración de almacenamiento. Hay, por supuesto, muchos más. Linux admite una amplia gama de dispositivos de almacenamiento y esquemas de sistemas de archivos. También ofrece muchas características para la interoperabilidad con otros sistemas.
 
-CRÉDITO ADICIONAL
-A menudo es útil verificar la integridad de una imagen ISO que hemos descargado. En la mayoría de los casos, un distribuidor de una imagen ISO también proporcionará un archivo de suma de verificación . Una suma de comprobación es el resultado de un cálculo matemático exótico que da como resultado un número que representa el contenido del archivo de destino. Si el contenido del archivo cambia incluso un bit, la suma de comprobación resultante será muy diferente. El método más común de generación de suma de comprobación utiliza el programa md5sum . Cuando usa md5sum , produce un número hexadecimal único.
+## CRÉDITO ADICIONAL
 
+A menudo es útil verificar la integridad de una imagen ISO que hemos descargado. En la mayoría de los casos, un distribuidor de una imagen ISO también proporcionará un archivo de suma de verificación. Una suma de comprobación es el resultado de un cálculo matemático exótico que da como resultado un número que representa el contenido del archivo de destino. Si el contenido del archivo cambia incluso un bit, la suma de comprobación resultante será muy diferente. El método más común de generación de suma de comprobación utiliza el programa `md5sum` . Cuando usa `md5sum`, produce un número hexadecimal único.
+
+```sh
 md5sum image.iso
-34e354760f9bb7fbf85c96f6a3f94ece image.iso
+34e354760f9bb7fbf85c96f6a3f94ece  image.iso
+```
 
-Después de descargar una imagen, debe ejecutar md5sum contra ella y comparar los resultados con el valor de md5sum proporcionado por el editor.
+Después de descargar una imagen, debe ejecutar `md5sum` contra ella y comparar los resultados con el valor de `md5sum` proporcionado por el editor.
 
-Además de verificar la integridad de un archivo descargado, podemos usar md5sum para verificar los medios ópticos recién escritos. Para hacer esto, primero calculamos la suma de verificación del archivo de imagen y luego calculamos una suma de verificación para los medios. El truco para verificar los medios es limitar el cálculo a solo la parte de los medios ópticos que contiene la imagen. Hacemos esto determinando el número de bloques de 2,048 bytes que contiene la imagen (los medios ópticos siempre se escriben en bloques de 2,048 bytes) y leyendo esa cantidad de bloques de los medios. En algunos tipos de medios, esto no es obligatorio. Los discos CD-R y CD-RW escritos en modo de disco a la vez se pueden verificar de esta manera.
+Además de verificar la integridad de un archivo descargado, podemos usar `md5sum` para verificar los medios ópticos recién escritos. Para hacer esto, primero calculamos la suma de verificación del archivo de imagen y luego calculamos una suma de verificación para los medios. El truco para verificar los medios es limitar el cálculo a solo la parte de los medios ópticos que contiene la imagen. Hacemos esto determinando el número de bloques de 2,048 bytes que contiene la imagen (los medios ópticos siempre se escriben en bloques de 2,048 bytes) y leyendo esa cantidad de bloques de los medios. En algunos tipos de medios, esto no es obligatorio. Los discos CD-R y CD-RW escritos en modo de disco a la vez se pueden verificar de esta manera.
 
-md5sum / dev / cdrom
-34e354760f9bb7fbf85c96f6a3f94ece / dev / cdrom
+```sh
+md5sum /dev/cdrom
+34e354760f9bb7fbf85c96f6a3f94ece  /dev/cdrom
+```
 
-Muchos tipos de medios, como los DVD, requieren un cálculo preciso de la cantidad de bloques. En el siguiente ejemplo, verificamos la integridad del archivo de imagen dvd-image.iso y el disco en el lector de DVD / dev / dvd . ¿Puedes imaginar cómo funciona esto?
+Muchos tipos de medios, como los DVD, requieren un cálculo preciso de la cantidad de bloques. En el siguiente ejemplo, verificamos la integridad del archivo de imagen `dvd-image.iso` y el disco en el lector de DVD `/dev/dvd` . ¿Puedes imaginar cómo funciona esto?
 
-md5sum dvd-image.iso; dd if = / dev / dvd bs = 2048 count = $ (( $ (stat -c "% s" dvd-image.iso) / 2048 ))
+```sh
+md5sum dvd-image.iso; dd if=/dev/dvd bs=2048 count=$(( $(stat -c "%s" dvd-image.iso) / 2048 ))
 | md5sum
+```
